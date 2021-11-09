@@ -1,0 +1,19 @@
+p id="notice" = notice
+
+h1 Posts
+
+table
+  thead
+    tr
+      th Title
+      th Detail
+      th Genre
+      th Duration
+      th colspan="3"
+  tbody
+    - @posts.each do |post|
+      tr
+        td = post.title
+        td = post.detail
+br
+= link_to 'New Post', new_post_path
