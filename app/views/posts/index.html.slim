@@ -1,9 +1,7 @@
-
 .movies-container
   .movies-sidebar
   .movies-grid
     - @posts.each do |movie|
       .movie-card
-        .movie-thumbnail
-          img src=movie.thumbnail_url
+        img.movie-thumbnail src=movie.thumbnail_url
         .movie-title = movie.title
