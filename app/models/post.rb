@@ -3,10 +3,9 @@ class Post
   field :title, type: String
   field :thumbnail_url, type: String
   # field :detail, type: String
-  # field :release_date, type: DateTime
+  field :release_date, type: DateTime
   # field :movie_type, type: String
   # field :director, type: String
-  # field :producer, type: String
   # field :language, type: String
   # field :genre, type: String
   # field :duration, type: String

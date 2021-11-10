@@ -1,7 +1,14 @@
 .movies-container
-  .movies-sidebar
+  .movies-sidebar data-controller="search"
+    .movies-search
+      span.movies-search-title Buscar pelicula
+      input.movie-search-input data-action="keyup->search#movie"
+    .movies-generes
+      - Genre.all.each do |item|
+        .movie-genre-item = item.genre
   .movies-grid
     - @posts.each do |movie|
-      .movie-card
+      .movie-card data-movie-id=movie.id.to_s
         img.movie-thumbnail src=movie.thumbnail_url
         .movie-title = movie.title
+        .movie-year = movie.release_date.year
