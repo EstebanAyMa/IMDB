@@ -1,14 +1,21 @@
-.movies-container
-  .movies-sidebar data-controller="search"
+.movies-container data-controller="movie"
+  .movies-sidebar
     .movies-search
       span.movies-search-title Buscar pelicula
-      input.movie-search-input data-action="keyup->search#movie"
+      input.movie-search-input data-action="keyup->movie#searchByTitle"
+
     .movies-generes
+      .movies-generes-title Seleccionar genero
       - Genre.all.each do |item|
-        .movie-genre-item = item.genre
+        .movie-genre-item data-action="click->movie#searchByGenre"
+          = item.genre
   .movies-grid
     - @posts.each do |movie|
-      .movie-card data-movie-id=movie.id.to_s
+      .movie-card data-movie-id=movie.id.to_s data-action="click->movie#displayDetails mouseleave->movie#hideDetails"
         img.movie-thumbnail src=movie.thumbnail_url
         .movie-title = movie.title
         .movie-year = movie.release_date.year
+        .movie-card-details
+          .movie-title = movie.title
+          .movie-year = movie.release_date.year
+

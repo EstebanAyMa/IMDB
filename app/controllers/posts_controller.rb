@@ -55,8 +55,18 @@ class PostsController < ApplicationController
     end
 
     def search_posts
+      return search_posts_by_title if params[:type] == "title"
+
+      search_posts_by_genre
+    end
+
+    def search_posts_by_title
       Post.where(title: /#{params[:query]}/i).only(:id).map{ |p| p.id.to_s }
     end
+
+  def search_posts_by_genre
+    Post.where(genre: /#{params[:query]}/i).only(:id).map{ |p| p.id.to_s }
+  end
 
     # Only allow a list of trusted parameters through.
     def post_params

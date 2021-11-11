@@ -2,7 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
-@import url('https://fonts.googleapis.com/css?family=Raleway:200');
+//@import url('https://fonts.googleapis.com/css?family=Raleway:200');
 
 body {
   margin: 0;
@@ -10,7 +10,7 @@ body {
   color: white;
   background-color: #1d1d1f;
   font-size: 12px;
-  font-family: 'Raleway';
+  font-family: 'Arial';
 }
 
 .movies-container {
@@ -23,10 +23,10 @@ body {
 .movies-sidebar {
   display: flex;
   flex-flow: column nowrap;
-  width: 150px;
+  width: 170px;
   min-height: 100vh;
   box-shadow: 0px 1px 2px black, 0px 2px 2px #1d1d1f;
-  padding: 10px 5px;
+  padding: 20px 15px;
 }
 
 .movies-search-title {
@@ -37,6 +37,14 @@ body {
   margin-top: 8px;
 }
 
+.movies-generes {
+  padding: 15px 0;
+}
+
+.movies-generes-title {
+  padding-bottom: 5px;
+}
+
 .movies-grid {
   display: flex;
   flex-flow: row wrap;
@@ -44,12 +52,42 @@ body {
   width: 100%;
   max-width: calc(100vw - 150px);
   padding: 10px;
-  gap: 10px;
+  gap: 15px;
+  align-content: flex-start;
 }
 
 .movie-card {
+  position: relative;
   width: 135px;
   height: -webkit-fit-content;
+  transition: transform .3s ease-in-out;
+
+  .movie-card-details {
+    display: none;
+  }
+
+  &:hover {
+    z-index: 2;
+    cursor: pointer;
+    transform: scale(1.5);
+
+    & ~ .movie-card {
+      transform: translateX(25%);
+    }
+  }
+}
+
+.movie-card-details {
+  display: none;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 50%;
+  background-color: #1d1d1f;
+
+  &.details {
+    display: block;
+  }
 }
 
 .movie-title {
@@ -59,7 +97,6 @@ body {
 }
 
 .movie-year {
-  //padding-top: 5px;
   font-size: 10px;
 }
 
@@ -67,4 +104,14 @@ body {
   width: 135px;
   height: 200px;
   box-shadow: 3px 3px 6px 0 black;
+}
+
+.movie-genre-item {
+  line-height: 2em;
+
+  &:hover {
+    color: gold;
+    cursor: pointer;
+    background-color: #2E2F30;
+  }
 }

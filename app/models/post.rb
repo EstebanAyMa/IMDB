@@ -7,7 +7,7 @@ class Post
   # field :movie_type, type: String
   # field :director, type: String
   # field :language, type: String
-  # field :genre, type: String
+  field :genre, type: String
   # field :duration, type: String
   # field :rated, type: String
   # field :media_formats, type: String
