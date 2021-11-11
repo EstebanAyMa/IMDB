@@ -34,19 +34,14 @@ export default class extends Controller {
     const currentCard = e.currentTarget.querySelector('.movie-card-details')
     const detailsContainer = document.querySelector('.movie-details-container')
     detailsContainer.classList.remove('hidden')
+    const displayedCard = detailsContainer.querySelector('.movie-card-details')
+    if (displayedCard) {
+      displayedCard.remove()
+    }
     detailsContainer.insertAdjacentHTML('beforeend', currentCard.outerHTML)
     const movieImage = detailsContainer.querySelector('.movie-background-image')
     const cardImage = currentCard.parentElement.querySelector('.movie-thumbnail')
     movieImage.style.backgroundImage = `url('${cardImage.src}')`
   }
 
-
-  hideDetails(e) {
-    const detailsContainer = document.querySelector('.movie-details-container')
-    const currentCard = detailsContainer.querySelector('.movie-card-details')
-    if (currentCard) {
-      currentCard.remove()
-    }
-    detailsContainer.classList.add('hidden')
-  }
 }
