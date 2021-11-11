@@ -3,19 +3,26 @@
     .movies-search
       span.movies-search-title Buscar pelicula
       input.movie-search-input data-action="keyup->movie#searchByTitle"
-
     .movies-generes
       .movies-generes-title Seleccionar genero
       - Genre.all.each do |item|
         .movie-genre-item data-action="click->movie#searchByGenre"
           = item.genre
-  .movies-grid
-    - @posts.each do |movie|
-      .movie-card data-movie-id=movie.id.to_s data-action="click->movie#displayDetails mouseleave->movie#hideDetails"
-        img.movie-thumbnail src=movie.thumbnail_url
-        .movie-title = movie.title
-        .movie-year = movie.release_date.year
-        .movie-card-details
+
+  .movies-body-container
+    .movies-grid
+      - @posts.each do |movie|
+        .movie-card data-movie-id=movie.id.to_s data-action="click->movie#displayDetails mouseleave->movie#hideDetails"
+          img.movie-thumbnail src=movie.thumbnail_url
           .movie-title = movie.title
           .movie-year = movie.release_date.year
+          .movie-card-details
+            h1 = "#{movie.title} - #{movie.release_date.year}"
+            .movie-item
+              span Sinopsis:
+              div = movie.detail
 
+    .movie-details-container.hidden
+      .movie-background-container
+        .movie-background-shadow
+        .movie-background-image

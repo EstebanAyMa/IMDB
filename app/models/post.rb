@@ -2,7 +2,7 @@ class Post
   include Mongoid::Document
   field :title, type: String
   field :thumbnail_url, type: String
-  # field :detail, type: String
+  field :detail, type: String
   field :release_date, type: DateTime
   # field :movie_type, type: String
   # field :director, type: String
